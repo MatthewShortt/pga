@@ -13,7 +13,3 @@ deploy:
   local_dir: build
   on:
     branch: master
-'':
-  travis:
-    yml:
-      secure: e6MBhsRxtLHwDsi+g8r2QZEaOc49TtTY/OkoYIm6DwIfRb14p7j/xGUl3qpfBzc7jqcZjjEX85tdCJpA3uQQ9e0py3/oSVUiV0tN2GxmowZClqPcLOkOFxw0TJsQw/RRiqbh82K5/dDN3KsjANjj2QVmGD5nIhR/Z7rys1sZ98Di6Qteil/Hk/FSpokPSAM3WV8b0qEFTxPPMvlJ5/L77DlCAd7lbdUfeujv6KRb4DLDbDCN68i/8jbAuvjbNhSTAfosCX7BO8IWWmnztX/cYwKctTLq6f4RhBJEey6SsVMiuYY0+y5fg0pawNARwDKKHEuZEMtKfr14tGrVtVv5j64gz+YODVaOY5mJVxG+A81LpBL8WOiVToI27/OiZ3xcpkQyxTJ+r1daj73D17jSJ8mIBE3TxkqQvV69no8VlU5ZEZ0JY6l2cz1c/f/fx/XGxazHh33Eo0PZjDdZfdmHnaUzgnPmRaqptafzdvsWn3qUHP3rFt/2Ux+QVBXltjWHNktcVeydGX5r0umHcN3cr7ke4wJzB6rZDAdmwei9IEst3sWalrZ8P+dwzSRtfx+PWk3dS9jdSkfDsG7pCvTqeyBZObkBhdrUAlB+egzGQD0IzKELqyb/H2T6T/LQAbjtjqEgz4t3FhuOSagbW4kTJA6wj5+Z+l4cjIzAzNVhCBc=
