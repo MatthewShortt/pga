@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.pp-login {
+  justify-content: center;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 860px) {
+  .pp-login {
+    flex-direction: column;
+  }
+}

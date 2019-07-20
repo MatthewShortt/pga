@@ -1,27 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Route} from "react-router-dom";
+import {ConnectedRouter} from "connected-react-router";
+import {Summary} from "./Summary";
+import {history} from "./store";
 
-function App() {
+export default function App() {
+
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <span className="uk-badge">100</span>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
+        <ConnectedRouter history={history}>
+            <Route exact path="/" component={Summary}/>
+        </ConnectedRouter>
     );
-}
-
-export default App;
+};
