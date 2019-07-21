@@ -6,7 +6,7 @@ export function Summary() {
         {
             name: "Ronan Weir",
             position: "1",
-            total: "-12",
+            total: "-11",
             players: [
                 {
                     name: "Tony Finau",
@@ -14,7 +14,7 @@ export function Summary() {
                 },
                 {
                     name: "Brooks Koepka",
-                    score: "-7"
+                    score: "-6"
                 },
                 {
                     name: "Patrick Cantlay",
@@ -29,11 +29,11 @@ export function Summary() {
         {
             name: "Kyle Gray",
             position: "2",
-            total: "-8",
+            total: "-7",
             players: [
                 {
                     name: "Rickie Fowler",
-                    score: "-6"
+                    score: "-5"
                 },
                 {
                     name: "Danny Willett",
@@ -121,11 +121,11 @@ export function Summary() {
         {
             name: "Matt Shortt",
             position: "6",
-            total: "-1",
+            total: "E",
             players: [
                 {
                     name: "Justin Rose",
-                    score: "-2"
+                    score: "-1"
                 },
                 {
                     name: "Henrik Stenson",
