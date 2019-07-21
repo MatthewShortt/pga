@@ -4,59 +4,36 @@ import React from 'react';
 export function Summary() {
     const people = [
         {
-            name: "Carter Brooks",
-            position: "1",
-            total: "-19",
-            players: [
-                {
-                    name: "Tommy Fleetwood",
-                    score: "-12"
-                },
-                {
-                    name: "Xander Schauffele",
-                    score: "-5"
-                },
-                {
-                    name: "Graeme McDowell",
-                    score: "-2"
-                },
-                {
-                    name: "Bryson Deschambeau",
-                    score: "+5(MC)"
-                }
-            ]
-        },
-        {
             name: "Ronan Weir",
-            position: "T2",
-            total: "-17",
+            position: "T1",
+            total: "-11",
             players: [
-                {
-                    name: "Brooks Koepka",
-                    score: "-9"
-                },
                 {
                     name: "Tony Finau",
                     score: "-7"
                 },
                 {
+                    name: "Brooks Koepka",
+                    score: "-6"
+                },
+                {
                     name: "Patrick Cantlay",
-                    score: "-1"
+                    score: "+2"
                 },
                 {
                     name: "Paul Casey",
-                    score: "+2"
+                    score: "+4"
                 }
             ]
         },
         {
             name: "Kyle Gray",
-            position: "T2",
-            total: "-17",
+            position: "T1",
+            total: "-11",
             players: [
                 {
                     name: "Rickie Fowler",
-                    score: "-8"
+                    score: "-7"
                 },
                 {
                     name: "Danny Willett",
@@ -64,7 +41,7 @@ export function Summary() {
                 },
                 {
                     name: "Dustin Johnson",
-                    score: "-2"
+                    score: "+3"
                 },
                 {
                     name: "Tiger Woods",
@@ -74,43 +51,42 @@ export function Summary() {
         },
         {
             name: "Jack Vautour",
-            position: "4",
-            total: "-13",
+            position: "3",
+            total: "-9",
             players: [
                 {
                     name: "Jon Rahm",
-                    score: "-7"
+                    score: "-3"
                 },
                 {
                     name: "Jordan Spieth",
-                    score: "-7"
+                    score: "-3"
+                }, {
+                    name: "Francesco Molinari",
+                    score: "-3"
                 },
                 {
                     name: "Louis Oosthuizen",
-                    score: "+1"
-                },
-                {
-                    name: "Francesco Molinari",
-                    score: "+2"
+                    score: "-1"
                 }
             ]
         },
         {
             name: "Matt Shortt",
-            position: "5",
-            total: "-10",
+            position: "4",
+            total: "-7",
             players: [
                 {
-                    name: "Justin Rose",
-                    score: "-9"
+                    name: "Henrik Stenson",
+                    score: "-4"
                 },
                 {
-                    name: "Henrik Stenson",
-                    score: "-6"
+                    name: "Justin Rose",
+                    score: "-3"
                 },
                 {
                     name: "Eddie Pepperell",
-                    score: "+5"
+                    score: "+8"
                 },
                 {
                     name: "Jason Day",
@@ -119,16 +95,63 @@ export function Summary() {
             ]
         },
         {
-            name: "Chris Grills",
-            position: "6",
-            total: "-7",
+            name: "Tyler Verbanec",
+            position: "5",
+            total: "-5",
             players: [
                 {
-                    name: "Matt Kuchar",
-                    score: "-6"
-                }, {
+                    name: "Tyrrell Hatton",
+                    score: "-5"
+                },
+                {
+                    name: "Lucas Bjerregaard",
+                    score: "-2"
+                },
+                {
+                    name: "Rory Mcilroy",
+                    score: "+2(MC)"
+                },
+                {
+                    name: "Gary Woodland",
+                    score: "+3(MC)"
+                },
+            ]
+        },
+        {
+            name: "Carter Brooks",
+            position: "6",
+            total: "-4",
+            players: [
+                {
+                    name: "Tommy Fleetwood",
+                    score: "-10"
+                },
+                {
+                    name: "Xander Schauffele",
+                    score: "+2"
+                },
+                {
+                    name: "Graeme McDowell",
+                    score: "+4"
+                },
+                {
+                    name: "Bryson Deschambeau",
+                    score: "+5(MC)"
+                }
+            ]
+        },
+        {
+            name: "Chris Grills",
+            position: "7",
+            total: "+1",
+            players: [
+                {
                     name: "Justin Thomas",
-                    score: "-4"
+                    score: "-3"
+                },
+                {
+                    name: "Matt Kuchar",
+                    score: "+1"
                 },
                 {
                     name: "Hideki Matsuyama",
@@ -139,29 +162,6 @@ export function Summary() {
                     score: "+9(MC)"
                 }
 
-            ]
-        },
-        {
-            name: "Tyler Verbanec",
-            position: "7",
-            total: "-2",
-            players: [
-                {
-                    name: "Tyrrell Hatton",
-                    score: "-3"
-                },
-                {
-                    name: "Lucas Bjerregaard",
-                    score: "-1"
-                },
-                {
-                    name: "Rory Mcilroy",
-                    score: "+2(MC)"
-                },
-                {
-                    name: "Gary Woodland",
-                    score: "+3(MC)"
-                },
             ]
         }
     ];
