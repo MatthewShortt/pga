@@ -5,8 +5,8 @@ export function Summary() {
     const people = [
         {
             name: "Ronan Weir",
-            position: "T1",
-            total: "-11",
+            position: "1",
+            total: "-12",
             players: [
                 {
                     name: "Tony Finau",
@@ -14,7 +14,7 @@ export function Summary() {
                 },
                 {
                     name: "Brooks Koepka",
-                    score: "-6"
+                    score: "-7"
                 },
                 {
                     name: "Patrick Cantlay",
@@ -28,16 +28,16 @@ export function Summary() {
         },
         {
             name: "Kyle Gray",
-            position: "T1",
-            total: "-11",
+            position: "2",
+            total: "-8",
             players: [
                 {
                     name: "Rickie Fowler",
-                    score: "-7"
+                    score: "-6"
                 },
                 {
                     name: "Danny Willett",
-                    score: "-7"
+                    score: "-5"
                 },
                 {
                     name: "Dustin Johnson",
@@ -52,18 +52,19 @@ export function Summary() {
         {
             name: "Jack Vautour",
             position: "3",
-            total: "-9",
+            total: "-6",
             players: [
                 {
-                    name: "Jon Rahm",
+                    name: "Francesco Molinari",
                     score: "-3"
                 },
                 {
+                    name: "Jon Rahm",
+                    score: "-2"
+                },
+                {
                     name: "Jordan Spieth",
-                    score: "-3"
-                }, {
-                    name: "Francesco Molinari",
-                    score: "-3"
+                    score: "-1"
                 },
                 {
                     name: "Louis Oosthuizen",
@@ -72,31 +73,8 @@ export function Summary() {
             ]
         },
         {
-            name: "Matt Shortt",
-            position: "4",
-            total: "-7",
-            players: [
-                {
-                    name: "Henrik Stenson",
-                    score: "-4"
-                },
-                {
-                    name: "Justin Rose",
-                    score: "-3"
-                },
-                {
-                    name: "Eddie Pepperell",
-                    score: "+8"
-                },
-                {
-                    name: "Jason Day",
-                    score: "+2(MC)"
-                }
-            ]
-        },
-        {
             name: "Tyler Verbanec",
-            position: "5",
+            position: "4",
             total: "-5",
             players: [
                 {
@@ -119,12 +97,12 @@ export function Summary() {
         },
         {
             name: "Carter Brooks",
-            position: "6",
-            total: "-4",
+            position: "5",
+            total: "-3",
             players: [
                 {
                     name: "Tommy Fleetwood",
-                    score: "-10"
+                    score: "-9"
                 },
                 {
                     name: "Xander Schauffele",
@@ -141,9 +119,32 @@ export function Summary() {
             ]
         },
         {
+            name: "Matt Shortt",
+            position: "6",
+            total: "-1",
+            players: [
+                {
+                    name: "Justin Rose",
+                    score: "-2"
+                },
+                {
+                    name: "Henrik Stenson",
+                    score: "-1"
+                },
+                {
+                    name: "Eddie Pepperell",
+                    score: "+8"
+                },
+                {
+                    name: "Jason Day",
+                    score: "+2(MC)"
+                }
+            ]
+        },
+        {
             name: "Chris Grills",
             position: "7",
-            total: "+1",
+            total: "+2",
             players: [
                 {
                     name: "Justin Thomas",
@@ -151,7 +152,7 @@ export function Summary() {
                 },
                 {
                     name: "Matt Kuchar",
-                    score: "+1"
+                    score: "+2"
                 },
                 {
                     name: "Hideki Matsuyama",
