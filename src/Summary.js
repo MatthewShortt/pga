@@ -7,6 +7,7 @@ export function Summary() {
     const WORST_SCORE_DAY_3 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_3), []);
     const WORST_SCORE_DAY_4 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_4), []);
     const IS_WEEKEND = useMemo(() => parseInt(process.env.REACT_APP_IS_WEEKEND), []);
+    // eslint-disable-next-line
     const people = useMemo(() => getPeople(JSON.parse(process.env.REACT_APP_SCORES)), []);
 
     return (
