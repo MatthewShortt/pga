@@ -1,9 +1,9 @@
-import {applyMiddleware, compose, createStore} from 'redux';
-import {createHashHistory} from 'history';
-import createRootReducer from './RootReducer';
-import {routerMiddleware} from "connected-react-router";
-import createSagaMiddleware from 'redux-saga';
-import {all} from 'redux-saga/effects';
+import { applyMiddleware, compose, createStore } from 'redux';
+import { createHashHistory } from 'history';
+import createRootReducer     from './root-reducer';
+import { routerMiddleware }  from 'connected-react-router';
+import createSagaMiddleware                      from 'redux-saga';
+import { all }                                   from 'redux-saga/effects';
 
 const sagaMiddleware = createSagaMiddleware();
 
