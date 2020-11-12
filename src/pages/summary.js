@@ -1,16 +1,30 @@
 import mastersTitle                                 from '../assets/masters_title.svg';
 import mastersLogo                                  from '../assets/masters_logo.png';
-import React, { useMemo }                           from 'react';
+import React, { useEffect, useMemo }                from 'react';
 import { ScoreCard }                                from '../components/score-card';
 import { getMissedCutScore, getNumberAsGolfString } from '../utils/golf-utils';
+import { useDispatch, useSelector }                 from 'react-redux';
+import { StatsStartPolling, StatsStopPolling }      from '../state/masters/masters-actions';
 
 export function Summary() {
+
+    let dispatch    = useDispatch();
+    let { masters } = useSelector(state => state);
+
+    console.log(masters);
 
     const WORST_SCORE_DAY_3 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_3), []);
     const WORST_SCORE_DAY_4 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_4), []);
     const IS_WEEKEND        = useMemo(() => parseInt(process.env.REACT_APP_IS_WEEKEND), []);
     // eslint-disable-next-line
     const people            = useMemo(() => getPeople(JSON.parse(process.env.REACT_APP_SCORES)), []);
+
+    useEffect(() => {
+        dispatch(StatsStartPolling());
+        return () => {
+            dispatch(StatsStopPolling());
+        }
+    }, [dispatch]);
 
     return (
         <div className="uk-height-viewport uk-background-default uk-margin-medium-bottom">
