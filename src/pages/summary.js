@@ -21,7 +21,7 @@ export function Summary() {
                 <img src={mastersLogo} width="90px" height="100px" alt="The British Open Logo"
                      className="uk-position-small uk-position-top-right uk-margin-top uk-visible@l"/>
                 <div className="uk-align-center uk-width-1-1@m">
-                    <div className="uk-text-center" data-uk-grid data-uk-sortable>
+                    <div className="uk-text-center" data-uk-grid>
                         {people.map((person, i) =>
                             <div key={i} className="uk-width-1-3@l uk-width-1-2@m">
                                 <ScoreCard person={person} position={i + 1}/>
