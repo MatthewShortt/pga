@@ -15,10 +15,14 @@ export function ScoreCard({ person, position }) {
                 </thead>
                 <tbody>
                 {person.players
-                    .map(({ name, score, cut, stats }, k) =>
-                        <tr key={k}>
-                            <td>{name}</td>
-                            <td>{getPlayerScoreAsString(stats.topar || 'E', cut)}</td>
+                    .map(({ id, name, score, cut, stats }, k) =>
+                        <tr key={k} className='uk-text-middle'>
+                            <td className='uk-padding-remove-horizontal'>
+                                <img className="uk-border-circle" src={`https://www.masters.com/images/players/2020/240x240/${id}.jpg`} width="40"
+                                     alt={name}/>
+                            </td>
+                            <td className='uk-text-left uk-text-middle'>{name}</td>
+                            <td className='uk-text-left uk-text-middle'>{getPlayerScoreAsString(stats.topar || 'E', cut)}</td>
                         </tr>
                     )}
                 </tbody>
