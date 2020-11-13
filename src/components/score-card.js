@@ -14,12 +14,13 @@ export function ScoreCard({ person, position }) {
                 <thead>
                 </thead>
                 <tbody>
-                {person.players.map(({ name, score, cut }, k) =>
-                    <tr key={k}>
-                        <td>{name}</td>
-                        <td>{getPlayerScoreAsString(score, cut)}</td>
-                    </tr>
-                )}
+                {person.players
+                    .map(({ name, score, cut, stats }, k) =>
+                        <tr key={k}>
+                            <td>{name}</td>
+                            <td>{getPlayerScoreAsString(stats.topar || 'E', cut)}</td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
             <hr/>
@@ -27,12 +28,11 @@ export function ScoreCard({ person, position }) {
     )
 
     function getPlayerScoreAsString(score, isCut) {
-        let scoreNumber = parseInt(score);
         return (isCut
                 ? <span>
-                    {getNumberAsGolfString(getMissedCutScore(scoreNumber))}
+                    {getNumberAsGolfString(getMissedCutScore(parseInt(score)))}
                     <a href='#missed-cut' data-uk-scroll>(MC)*</a>
                   </span>
-                : getNumberAsGolfString(scoreNumber));
+                : score);
     }
 }

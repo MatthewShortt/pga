@@ -5,6 +5,7 @@ import createSagaMiddleware                      from 'redux-saga';
 import { all }                                   from 'redux-saga/effects';
 import createRootReducer                         from './root-reducer';
 import { watchStatsAsync }                       from './masters/masters-actions';
+import { watchPicksAsync }                       from './picks/picks-actions';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,7 +15,8 @@ export const history = createHashHistory();
 
 function* rootSaga() {
     yield all([
-        watchStatsAsync()
+        watchStatsAsync(),
+        watchPicksAsync()
     ]);
 }
 

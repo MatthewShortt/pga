@@ -1,24 +1,22 @@
-import mastersTitle                                 from '../assets/masters_title.svg';
-import mastersLogo                                  from '../assets/masters_logo.png';
-import React, { useEffect, useMemo }                from 'react';
-import { ScoreCard }                                from '../components/score-card';
-import { getMissedCutScore, getNumberAsGolfString } from '../utils/golf-utils';
-import { useDispatch, useSelector }                 from 'react-redux';
-import { StatsStartPolling, StatsStopPolling }      from '../state/masters/masters-actions';
+import React, { useEffect, useMemo }           from 'react';
+import { useDispatch, useSelector }            from 'react-redux';
+import mastersTitle                            from '../assets/masters_title.svg';
+import mastersLogo                             from '../assets/masters_logo.png';
+import { ScoreCard }                           from '../components/score-card';
+import { getNumberAsGolfString }               from '../utils/golf-utils';
+import { StatsStartPolling, StatsStopPolling } from '../state/masters/masters-actions';
+import { PicksUpdate }                         from '../state/picks/picks-actions';
 
 export function Summary() {
 
-    let dispatch    = useDispatch();
-    let { masters } = useSelector(state => state);
-
-    console.log(masters);
+    let dispatch           = useDispatch();
+    let { masters, picks } = useSelector(state => state);
 
     const WORST_SCORE_DAY_3 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_3), []);
     const WORST_SCORE_DAY_4 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_4), []);
     const IS_WEEKEND        = useMemo(() => parseInt(process.env.REACT_APP_IS_WEEKEND), []);
-    // eslint-disable-next-line
-    const people            = useMemo(() => getPeople(JSON.parse(process.env.REACT_APP_SCORES)), []);
 
+    useEffect(() => { dispatch(PicksUpdate()); }, [masters, dispatch]);
     useEffect(() => {
         dispatch(StatsStartPolling());
         return () => {
@@ -36,11 +34,10 @@ export function Summary() {
                      className="uk-position-small uk-position-top-right uk-margin-top uk-visible@l"/>
                 <div className="uk-align-center uk-width-1-1@m">
                     <div className="uk-text-center" data-uk-grid>
-                        {people.map((person, i) =>
+                        {picks.map((person, i) =>
                             <div key={i} className="uk-width-1-3@l uk-width-1-2@m">
                                 <ScoreCard person={person} position={i + 1}/>
-                            </div>)
-                        }
+                            </div>)}
                     </div>
                 </div>
                 <div className={`uk-placeholder uk-text-left uk-padding-small ${!IS_WEEKEND ? 'uk-hidden' : ''}`}>
@@ -56,25 +53,5 @@ export function Summary() {
             </div>
         </div>
     );
-
-    function getPeople(people = []) {
-        return people
-            .map(person => {
-                person.players
-                    .sort((playerA, playerB) => {
-                        if (!playerA.cut && playerB.cut) return -1;
-                        else if (playerA.cut && !playerB.cut) return 1;
-                        else return playerA.score - playerB.score;
-                    })
-                    .slice(0, 3)
-                    .map((player, i) => {
-                        const scoreNumber = parseInt(player.score);
-                        person.total += !player.cut ? scoreNumber : getMissedCutScore(scoreNumber);
-                        return player;
-                    })
-                return person
-            })
-            .sort((personA, personB) => personA.total - personB.total);
-    }
 
 }
