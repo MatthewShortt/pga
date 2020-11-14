@@ -8,7 +8,7 @@ import _                                       from 'lodash';
 export default function Leaderboard() {
 
     let dispatch           = useDispatch();
-    let { masters, picks } = useSelector(state => state);
+    let { masters } = useSelector(state => state);
 
     useEffect(() => { dispatch(PicksUpdate()); }, [masters, dispatch]);
     useEffect(() => {
