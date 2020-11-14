@@ -21,11 +21,11 @@ export default function ScoreCard({ person, position }) {
                                  src={`https://www.masters.com/images/players/2020/240x240/${id}.jpg`} width="40"
                                  alt={name}/>
                         </td>
-                        <td className='uk-text-left uk-text-middle'>{name}</td>
+                        <td className='uk-text-light uk-text-left uk-text-middle'>{name}</td>
                         <td className='uk-text-left uk-text-middle'>
                             <img src={countries[stats.countryCode]} width="20" alt={stats.countryCode}/>
                         </td>
-                        <td className='uk-text-left uk-text-middle'>{getPlayerScoreAsString(stats.topar || 'E', cut)}</td>
+                        <td className='uk-text-light uk-text-left uk-text-middle'>{getPlayerScoreAsString(stats.topar || 'E', cut)}</td>
                     </tr>
                 )}
                 </tbody>

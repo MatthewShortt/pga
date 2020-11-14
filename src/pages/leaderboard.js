@@ -1,13 +1,13 @@
 import React, { useEffect }                    from 'react';
-import PageLayout                              from '../components/page-layout';
+import PageLayout                              from '../components/page-layout/page-layout';
 import { PicksUpdate }                         from '../state/picks/picks-actions';
 import { StatsStartPolling, StatsStopPolling } from '../state/masters/masters-actions';
 import { useDispatch, useSelector }            from 'react-redux';
-import _                                       from 'lodash';
+import { countries }                           from '../utils/country-svgs';
 
 export default function Leaderboard() {
 
-    let dispatch           = useDispatch();
+    let dispatch    = useDispatch();
     let { masters } = useSelector(state => state);
 
     useEffect(() => { dispatch(PicksUpdate()); }, [masters, dispatch]);
@@ -22,31 +22,48 @@ export default function Leaderboard() {
         <PageLayout>
             <table className='uk-table uk-table-small uk-table-striped uk-text-left'>
                 <thead>
-                    <tr>
-                        <th/>
-                        <th>Player</th>
-                        <th>Pos.</th>
-                        <th>Score</th>
-                    </tr>
+                <tr className='uk-text-small'>
+                    <th className='uk-text-capitalize uk-table-shrink'>Pos</th>
+                    <th className='uk-text-capitalize uk-table-shrink uk-padding-remove-left'/>
+                    <th className='uk-text-capitalize'>Player</th>
+                    <th className='uk-text-capitalize uk-table-shrink'>R3</th>
+                    <th className='uk-text-capitalize uk-table-shrink'>Thru</th>
+                    <th className='uk-text-capitalize uk-table-shrink'>Score</th>
+                </tr>
                 </thead>
                 <tbody>
                 {masters.player
                     .filter(player => player.pos)
-                    .map(({ id, display_name, pos, topar }, i) =>
-                        <tr>
-                            <td className='uk-padding-remove-right uk-text-middle'>
-                                <img className="uk-border-circle"
-                                     src={`https://www.masters.com/images/players/2020/240x240/${id}.jpg`} width="40"
-                                     alt={display_name}/>
+                    .map(({ id, status, first_name, last_name, pos, topar, countryCode, today, thru, teetime }, i) =>
+                        <tr className='uk-text-small' key={`leaderboard-${id}-${i}`}>
+                            <td className='uk-text-light uk-text-middle uk-padding-remove-right'>{getPosition(pos, status)}</td>
+                            <td className='uk-text-light uk-text-left uk-text-middle uk-padding-remove'>
+                                <img className='uk-preserve-width' src={countries[countryCode]} width="20"
+                                     alt={countryCode}/>
                             </td>
-                            <td className='uk-text-middle'>{_.startCase(_.toLower(display_name))}</td>
-                            <td className='uk-text-middle'>{pos}</td>
-                            <td className='uk-text-middle'>{topar}</td>
+                            <td className='uk-text-light uk-text-middle uk-text-truncate'>{getDisplayName(first_name, last_name)}</td>
+                            <td className='uk-text-light uk-text-middle'>{today || '-'}</td>
+                            <td className='uk-text-light uk-text-middle'>{thru || teetime}</td>
+                            <td className='uk-text-light uk-text-middle'>{topar}</td>
                         </tr>
                     )}
                 </tbody>
             </table>
         </PageLayout>
     )
+
+    function getPosition(pos, status) {
+        if (status === 'C') return 'CUT';
+        else if (status === 'W') return 'WD';
+        else return pos;
+    }
+
+    function getDisplayName(firstName, lastName) {
+        return `${getFirstNameInitials(firstName)} ${lastName}`;
+    }
+
+    function getFirstNameInitials(firstName) {
+        return firstName.split(' ').map(name => name[0].concat('.')).join(' ');
+    }
 
 }

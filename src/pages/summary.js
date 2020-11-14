@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo }           from 'react';
 import { useDispatch, useSelector }            from 'react-redux';
 import ScoreCard                               from '../components/score-card';
-import PageLayout                              from '../components/page-layout';
+import PageLayout                              from '../components/page-layout/page-layout';
 import { StatsStartPolling, StatsStopPolling } from '../state/masters/masters-actions';
 import { PicksUpdate }                         from '../state/picks/picks-actions';
 import { getNumberAsGolfString }               from '../utils/golf-utils';
