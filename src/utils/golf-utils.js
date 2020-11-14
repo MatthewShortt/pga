@@ -4,8 +4,8 @@ export function getNumberAsGolfString(total) {
     else return total;
 }
 
-export function getMissedCutScore(score) {
-    return score + parseInt(process.env.REACT_APP_WORST_SCORE_DAY_3) + parseInt(process.env.REACT_APP_WORST_SCORE_DAY_4)
+export function getMissedCutScore(score, todaysWorstScore = 0) {
+    return score + parseInt(process.env.REACT_APP_WORST_SCORE_DAY_3) + parseInt(process.env.REACT_APP_WORST_SCORE_DAY_4) + todaysWorstScore;
 }
 
 export function parseGolfScore(score = '0') {
@@ -15,4 +15,8 @@ export function parseGolfScore(score = '0') {
     } else {
         return parseInt(score);
     }
+}
+
+export function getTodaysWorstScore(players = []) {
+    return Math.max(...players.map(player => parseGolfScore(player.today)));
 }

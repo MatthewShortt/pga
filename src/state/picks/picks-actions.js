@@ -9,18 +9,21 @@ export function* watchPicksAsync() {
     yield takeLatest(PICKS_UPDATE_REQUESTED, updatePicksAsync);
 }
 
-export function* updatePicksAsync() {
+export function* updatePicksAsync({ payload: { todaysWorstScore } }) {
     let masters = yield select(Masters);
     let people  = yield select(Picks);
 
-    const payload = connectUserPicksWithStats(people, masters);
+    const payload = connectUserPicksWithStats(people, masters, todaysWorstScore);
 
     yield put(PicksUpdateSuccess(payload));
 }
 
-export function PicksUpdate() {
+export function PicksUpdate(todaysWorstScore) {
     return {
-        type: PICKS_UPDATE_REQUESTED
+        type: PICKS_UPDATE_REQUESTED,
+        payload: {
+            todaysWorstScore
+        }
     }
 }
 
@@ -31,13 +34,14 @@ export function PicksUpdateSuccess(payload) {
     }
 }
 
-function connectUserPicksWithStats(picks, stats) {
+function connectUserPicksWithStats(picks, stats, todaysWorstScore) {
     return picks
         .map(user => {
             user.total   = 0;
             user.players = user.players
                 .map(pick => {
                     pick.stats = stats.player.find(golfer => golfer.id === pick.id) || {};
+                    pick.cut   = pick.stats.status === 'C';
                     return pick;
                 })
                 .sort((playerA, playerB) => {
@@ -48,7 +52,7 @@ function connectUserPicksWithStats(picks, stats) {
                 .map((player, i) => {
                     if (i < 3) {
                         const scoreNumber = parseGolfScore(player.stats.topar);
-                        user.total += !player.cut ? scoreNumber : getMissedCutScore(scoreNumber);
+                        user.total += !player.cut ? scoreNumber : getMissedCutScore(scoreNumber, todaysWorstScore);
                     }
                     return player;
                 })
