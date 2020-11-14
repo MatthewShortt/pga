@@ -2,7 +2,6 @@ import React        from 'react';
 import mastersTitle from '../../assets/masters_title.svg';
 import mastersLogo  from '../../assets/masters_logo.png';
 import { NavLink }  from 'react-router-dom';
-import './page-layout.css'
 
 export default function PageLayout({ children }) {
 
