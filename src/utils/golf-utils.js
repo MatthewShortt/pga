@@ -20,3 +20,11 @@ export function parseGolfScore(score = '0') {
 export function getTodaysWorstScore(players = []) {
     return Math.max(...players.map(player => parseGolfScore(player.today)));
 }
+
+export function getDisplayName(firstName, lastName) {
+    return (firstName && lastName) ? `${getFirstNameInitials(firstName)} ${lastName}` : '';
+}
+
+export function getFirstNameInitials(firstName) {
+    return firstName.split(' ').map(name => name[0].concat('.')).join(' ');
+}

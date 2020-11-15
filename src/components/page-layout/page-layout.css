@@ -1,0 +1,8 @@
+.azaleas-background {
+    background-image: url(../../assets/azaleas.jpg);
+    background-size: cover;
+}
+
+.white-background {
+    background-color: white;
+}

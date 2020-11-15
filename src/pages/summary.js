@@ -27,7 +27,7 @@ export default function Summary() {
 
     return (
         <PageLayout>
-            <div className="uk-text-center" data-uk-grid >
+            <div className="uk-text-center" data-uk-grid>
                 {picks.map((person, i) =>
                     <div key={i} className="uk-width-1-3@l uk-width-1-2@m">
                         <ScoreCard person={person} position={i + 1} todaysWorstScore={todaysWorstScore}/>

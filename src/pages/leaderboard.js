@@ -4,6 +4,7 @@ import { PicksUpdate }                         from '../state/picks/picks-action
 import { StatsStartPolling, StatsStopPolling } from '../state/masters/masters-actions';
 import { useDispatch, useSelector }            from 'react-redux';
 import { countries }                           from '../utils/country-svgs';
+import { getDisplayName }                      from '../utils/golf-utils';
 
 export default function Leaderboard() {
 
@@ -56,14 +57,6 @@ export default function Leaderboard() {
         if (status === 'C') return 'CUT';
         else if (status === 'W') return 'WD';
         else return pos;
-    }
-
-    function getDisplayName(firstName, lastName) {
-        return `${getFirstNameInitials(firstName)} ${lastName}`;
-    }
-
-    function getFirstNameInitials(firstName) {
-        return firstName.split(' ').map(name => name[0].concat('.')).join(' ');
     }
 
 }
