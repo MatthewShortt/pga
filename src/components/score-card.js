@@ -29,7 +29,7 @@ export default function ScoreCard({ person, position, todaysWorstScore }) {
                                  alt={name}/>
                         </td>
                         <td className='uk-text-left uk-text-middle'>
-                            <button className='uk-button uk-button-text uk-text-light uk-text-left uk-text-capitalize color-green' onClick={() => showPlayerModal({id, name, stats})}>{name}</button>
+                            <button className='uk-button uk-button-text uk-text-light uk-text-left color-green' onClick={() => showPlayerModal({id, name, stats})}>{name}</button>
                         </td>
                         <td className='uk-text-left uk-text-middle'>
                             <img className='uk-preserve-width' src={countries[stats.countryCode]} width="20" alt={stats.countryCode}/>

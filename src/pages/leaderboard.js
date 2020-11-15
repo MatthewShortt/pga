@@ -5,6 +5,9 @@ import { StatsStartPolling, StatsStopPolling } from '../state/masters/masters-ac
 import { useDispatch, useSelector }            from 'react-redux';
 import { countries }                           from '../utils/country-svgs';
 import { getDisplayName, getPosition }         from '../utils/golf-utils';
+import { CurrentPlayerUpdate }             from '../state/player/player-actions';
+import PlayerModal, { PlayerModalElement } from '../components/player-modal/player-modal';
+import '../index.css';
 
 export default function Leaderboard() {
 
@@ -35,22 +38,32 @@ export default function Leaderboard() {
                 <tbody>
                 {masters.player
                     .filter(player => player.pos)
-                    .map(({ id, status, first_name, last_name, pos, topar, countryCode, today, thru, teetime }, i) =>
-                        <tr className='uk-text-small' key={`leaderboard-${id}-${i}`}>
-                            <td className='uk-text-light uk-text-middle uk-padding-remove-right'>{getPosition(pos, status)}</td>
+                    .map((player, i) =>
+                        <tr className='uk-text-small' key={`leaderboard-${player.id}-${i}`}>
+                            <td className='uk-text-light uk-text-middle uk-padding-remove-right'>{getPosition(player.pos, player.status)}</td>
                             <td className='uk-text-light uk-text-left uk-text-middle uk-padding-remove'>
-                                <img className='uk-preserve-width' src={countries[countryCode]} width="20"
-                                     alt={countryCode}/>
+                                <img className='uk-preserve-width' src={countries[player.countryCode]} width="20"
+                                     alt={player.countryCode}/>
                             </td>
-                            <td className='uk-text-light uk-text-middle uk-text-truncate'>{getDisplayName(first_name, last_name)}</td>
-                            <td className='uk-text-light uk-text-middle'>{today || '-'}</td>
-                            <td className='uk-text-light uk-text-middle'>{thru || teetime}</td>
-                            <td className='uk-text-light uk-text-middle'>{topar}</td>
+                            <td className='uk-text-light uk-text-middle uk-text-truncate color-green'>
+                                <button className='uk-button uk-button-text uk-text-light uk-text-left uk-text-capitalize color-green' onClick={() => showPlayerModal({id: player.id, name: player.display_name2, stats: player})}>
+                                    {getDisplayName(player.first_name, player.last_name)}
+                                </button>
+                            </td>
+                            <td className='uk-text-light uk-text-middle'>{player.today || '-'}</td>
+                            <td className='uk-text-light uk-text-middle'>{player.thru || player.teetime}</td>
+                            <td className='uk-text-light uk-text-middle'>{player.topar}</td>
                         </tr>
                     )}
                 </tbody>
             </table>
+            <PlayerModal/>
         </PageLayout>
     )
+
+    function showPlayerModal(player) {
+        dispatch(CurrentPlayerUpdate(player));
+        PlayerModalElement.show();
+    }
 
 }
