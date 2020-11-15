@@ -27,7 +27,7 @@ export default function Leaderboard() {
                     <th className='uk-text-capitalize uk-table-shrink'>Pos</th>
                     <th className='uk-text-capitalize uk-table-shrink uk-padding-remove-left'/>
                     <th className='uk-text-capitalize'>Player</th>
-                    <th className='uk-text-capitalize uk-table-shrink'>R3</th>
+                    <th className='uk-text-capitalize uk-table-shrink'>R4</th>
                     <th className='uk-text-capitalize uk-table-shrink'>Thru</th>
                     <th className='uk-text-capitalize uk-table-shrink'>Score</th>
                 </tr>

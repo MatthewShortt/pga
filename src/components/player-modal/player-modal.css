@@ -8,9 +8,6 @@
     font-size: 11px;
 }
 
-/*#045d26*/
-/*#006747*/
-
 .grid-container > div {
     padding: 10px 0;
 }
@@ -25,7 +22,6 @@
     color: black;
 }
 
-/*.item1 {*/
-/*    grid-row-start: 1;*/
-/*    grid-row-end: 3;*/
-/*}*/
+.cursor-pointer {
+    cursor: pointer;
+}

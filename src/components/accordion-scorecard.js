@@ -3,7 +3,7 @@ import React from 'react';
 export default function AccordionScorecard({ round, holes, pars, total, scores }) {
     return (
         <>
-            <a className="uk-accordion-title uk-text-light" href="#">Round {round} ({total})</a>
+            <span className="uk-accordion-title uk-text-light">Round {round} ({total})</span>
             <div className="uk-accordion-content">
                 <div className="grid-container uk-text-light uk-text-small uk-overflow-auto">
                     <div className="header">Hole</div>
