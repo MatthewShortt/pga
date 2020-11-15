@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import UIkit              from 'uikit';
 import { useSelector }    from 'react-redux';
-import { countries }      from '../../utils/country-svgs';
-import { getDisplayName } from '../../utils/golf-utils';
-import AccordionScorecard from '../accordion-scorecard';
+import { countries }                   from '../../utils/country-svgs';
+import { getDisplayName, getPosition } from '../../utils/golf-utils';
+import AccordionScorecard              from '../accordion-scorecard';
 import './player-modal.css';
 
 let PlayerModalElement;
@@ -14,9 +14,10 @@ export default function PlayerModal() {
 
     PlayerModalElement = UIkit.modal('#player-modal');
 
-    let { player: { id, stats: { first_name, last_name, pos, topar, countryCode, today, round1, round2, round3, round4 } }, masters: { pars } } = useSelector(state => state);
+    let { player: { id, stats: { first_name, last_name, pos, status, topar, countryCode, today, round1, round2, round3, round4 } }, masters: { pars } } = useSelector(state => state);
 
     let rounds = useMemo(() => [round1 || {}, round2 || {}, round3 || {}, round4 || {}], [round1, round2, round3, round4]);
+    let position = useMemo(() => getPosition(pos, status), [pos, status]);
 
     return (
         <div id='player-modal' data-uk-modal={true}>
@@ -30,20 +31,28 @@ export default function PlayerModal() {
                         <h3 className="uk-card-title uk-margin-remove-bottom">{getDisplayName(first_name, last_name)}</h3>
                         <p className="uk-text-meta uk-margin-remove-top">
                             <img className='uk-preserve-width' src={countries[countryCode]} width="20" alt={countryCode}/>
-                            <span className='uk-text-light'> Pos. <span className='uk-text-emphasis'>{pos}</span> | Score: <span className='uk-text-emphasis'>{topar}</span></span>
+                            <span className='uk-text-light'> Pos. <span className='uk-text-emphasis'>{position}</span> | Score: <span className='uk-text-emphasis'>{topar}</span></span>
                         </p>
                     </div>
                 </div>
                 <ul data-uk-accordion="multiple: true">
                     {rounds.map(({ scores, total }, i) =>
-                        <li key={`accordion-list-${id}-${i}`} className={`cursor-pointer ${i === 3 ? 'uk-open' : ''}`}>
-                            <AccordionScorecard round={i+1} holes={holes} pars={pars} total={total || today} scores={scores || []}/>
+                        <li key={`accordion-list-${id}-${i}`} className={`cursor-pointer ${isOpen(i+1)}`}>
+                            <AccordionScorecard round={i+1} holes={holes} pars={pars} total={total || today || position} scores={scores || []}/>
                         </li>
                     )}
                 </ul>
             </div>
         </div>
     )
+
+    function isOpen(round) {
+        return (round === parseInt(process.env.REACT_APP_CURRENT_ROUND) && !isCutOrWithdrew()) ? 'uk-open' : '';
+    }
+
+    function isCutOrWithdrew() {
+        return position === 'CUT' || position === 'WD';
+    }
 
 }
 

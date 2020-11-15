@@ -5,14 +5,15 @@ import PageLayout                                     from '../components/page-l
 import { StatsStartPolling, StatsStopPolling }        from '../state/masters/masters-actions';
 import { PicksUpdate }                                from '../state/picks/picks-actions';
 import { getNumberAsGolfString, getTodaysWorstScore } from '../utils/golf-utils';
+import '../index.css';
 
 export default function Summary() {
 
     let dispatch           = useDispatch();
     let { masters, picks } = useSelector(state => state);
 
-    // eslint-disable-next-line no-unused-vars
     const WORST_SCORE_DAY_3 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_3), []);
+    // eslint-disable-next-line no-unused-vars
     const WORST_SCORE_DAY_4 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_4), []);
     const IS_WEEKEND        = useMemo(() => process.env.REACT_APP_IS_WEEKEND, []);
     const todaysWorstScore  = useMemo(() => getTodaysWorstScore(masters.player || []), [masters]);
@@ -35,12 +36,12 @@ export default function Summary() {
             </div>
             <div className={`uk-placeholder uk-text-left uk-padding-small ${!IS_WEEKEND ? 'uk-hidden' : ''}`}>
                     <span id="missed-cut">
-                        <span className='uk-text-primary'>* </span>
+                        <span className='color-green'>* </span>
                         The player has missed the cut so the worst scores from round 3 and 4 have been added as a penalty:
                     </span>
                 <ul className="uk-list uk-list-disc uk-list-primary uk-text-small uk-margin-small-top">
-                    <li>Round 3 worst score: {getNumberAsGolfString(todaysWorstScore)}</li>
-                    <li>Round 4 worst score: {getNumberAsGolfString(WORST_SCORE_DAY_4)}</li>
+                    <li>Round 3 worst score: {getNumberAsGolfString(WORST_SCORE_DAY_3)}</li>
+                    <li>Round 4 worst score: {getNumberAsGolfString(todaysWorstScore)}</li>
                 </ul>
             </div>
         </PageLayout>

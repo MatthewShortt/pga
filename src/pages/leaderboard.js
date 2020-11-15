@@ -4,7 +4,7 @@ import { PicksUpdate }                         from '../state/picks/picks-action
 import { StatsStartPolling, StatsStopPolling } from '../state/masters/masters-actions';
 import { useDispatch, useSelector }            from 'react-redux';
 import { countries }                           from '../utils/country-svgs';
-import { getDisplayName }                      from '../utils/golf-utils';
+import { getDisplayName, getPosition }         from '../utils/golf-utils';
 
 export default function Leaderboard() {
 
@@ -27,7 +27,7 @@ export default function Leaderboard() {
                     <th className='uk-text-capitalize uk-table-shrink'>Pos</th>
                     <th className='uk-text-capitalize uk-table-shrink uk-padding-remove-left'/>
                     <th className='uk-text-capitalize'>Player</th>
-                    <th className='uk-text-capitalize uk-table-shrink'>R4</th>
+                    <th className='uk-text-capitalize uk-table-shrink'>R{process.env.REACT_APP_CURRENT_ROUND}</th>
                     <th className='uk-text-capitalize uk-table-shrink'>Thru</th>
                     <th className='uk-text-capitalize uk-table-shrink'>Score</th>
                 </tr>
@@ -52,11 +52,5 @@ export default function Leaderboard() {
             </table>
         </PageLayout>
     )
-
-    function getPosition(pos, status) {
-        if (status === 'C') return 'CUT';
-        else if (status === 'W') return 'WD';
-        else return pos;
-    }
 
 }

@@ -1,0 +1,11 @@
+.color-green {
+    color: #006747!important;
+}
+
+.uk-list-primary>::before {
+    color: #006747!important;
+}
+
+.uk-label {
+    background: #006747;
+}

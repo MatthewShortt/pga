@@ -28,3 +28,9 @@ export function getDisplayName(firstName, lastName) {
 export function getFirstNameInitials(firstName) {
     return firstName.split(' ').map(name => name[0].concat('.')).join(' ');
 }
+
+export function getPosition(pos, status) {
+    if (status === 'C') return 'CUT';
+    else if (status === 'W') return 'WD';
+    else return pos;
+}

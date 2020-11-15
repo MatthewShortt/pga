@@ -2,6 +2,7 @@ import React        from 'react';
 import mastersTitle from '../../assets/masters_title.svg';
 import mastersLogo  from '../../assets/masters_logo.png';
 import { NavLink }  from 'react-router-dom';
+import '../../index.css';
 
 export default function PageLayout({ children }) {
 
@@ -16,8 +17,8 @@ export default function PageLayout({ children }) {
                 <nav className='uk-navbar-container uk-margin' data-uk-navbar='mode: click'>
                     <div className='uk-navbar-left'>
                         <ul className='uk-navbar-nav'>
-                            <li><NavLink exact to='/' activeClassName='uk-text-primary'>Standings</NavLink></li>
-                            <li><NavLink to='/leaderboard' activeClassName='uk-text-primary'>Leaderboard</NavLink></li>
+                            <li><NavLink exact to='/' activeClassName='color-green'>Standings</NavLink></li>
+                            <li><NavLink to='/leaderboard' activeClassName='color-green'>Leaderboard</NavLink></li>
                         </ul>
                     </div>
                 </nav>

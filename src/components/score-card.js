@@ -4,6 +4,7 @@ import { countries }                                from '../utils/country-svgs'
 import PlayerModal, { PlayerModalElement }          from './player-modal/player-modal';
 import { useDispatch }                              from 'react-redux';
 import { CurrentPlayerUpdate }                      from '../state/player/player-actions';
+import '../index.css';
 
 export default function ScoreCard({ person, position, todaysWorstScore }) {
 
@@ -28,7 +29,7 @@ export default function ScoreCard({ person, position, todaysWorstScore }) {
                                  alt={name}/>
                         </td>
                         <td className='uk-text-left uk-text-middle'>
-                            <button className='uk-button uk-button-text uk-text-light uk-text-left uk-text-capitalize' onClick={() => showPlayerModal({id, name, stats})}>{name}</button>
+                            <button className='uk-button uk-button-text uk-text-light uk-text-left uk-text-capitalize color-green' onClick={() => showPlayerModal({id, name, stats})}>{name}</button>
                         </td>
                         <td className='uk-text-left uk-text-middle'>
                             <img className='uk-preserve-width' src={countries[stats.countryCode]} width="20" alt={stats.countryCode}/>
@@ -52,7 +53,7 @@ export default function ScoreCard({ person, position, todaysWorstScore }) {
         return (isCut
                 ? <span>
                     {getNumberAsGolfString(getMissedCutScore(parseInt(score), todaysWorstScore))}
-                    <a href='#missed-cut' data-uk-scroll>*</a>
+                    <a href='#missed-cut' data-uk-scroll className='color-green'>*</a>
                   </span>
                 : score);
     }
