@@ -25,3 +25,13 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 103, 71, .5);
+}
