@@ -1,0 +1,91 @@
+.header {
+    background-color: #006747;
+    color: white;
+}
+
+.body {
+    background-color: white;
+    color: black;
+    position: relative;
+}
+
+.birdie:before, .birdie span.outer {
+    box-sizing: content-box;
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 22px;
+    padding-bottom: 22px;
+    margin: -12px 0 0 -12px;
+    border: 1px solid #006747;
+    border-radius: 50%;
+}
+
+.bogey:before, .bogey span.outer {
+    box-sizing: content-box;
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 22px;
+    padding-bottom: 22px;
+    margin: -12px 0 0 -12px;
+    border: 1px solid #006747;
+}
+
+.eagle:before, .eagle span.outer {
+    box-sizing: content-box;
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 22px;
+    padding-bottom: 22px;
+    margin: -12px 0 0 -12px;
+    border: 1px solid #006747;
+    border-radius: 50%;
+}
+
+.eagle:after, .eagle span.inner {
+    box-sizing: content-box;
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 16px;
+    padding-bottom: 16px;
+    margin: -9px 0 0 -9px;
+    border: 1px solid #006747;
+    border-radius: 50%;
+}
+
+.double-bogey:before, .double-bogey span.outer {
+    box-sizing: content-box;
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 22px;
+    padding-bottom: 22px;
+    margin: -12px 0 0 -12px;
+    border: 1px solid #006747;
+}
+
+.double-bogey:after, .double-bogey span.inner {
+    box-sizing: content-box;
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 16px;
+    padding-bottom: 16px;
+    margin: -9px 0 0 -9px;
+    border: 1px solid #006747;
+}

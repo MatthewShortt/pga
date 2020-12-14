@@ -3,8 +3,9 @@ import UIkit              from 'uikit';
 import { useSelector }    from 'react-redux';
 import { countries }                   from '../../utils/country-svgs';
 import { getDisplayName, getPosition } from '../../utils/golf-utils';
-import AccordionScorecard              from '../accordion-scorecard';
+import AccordionScorecard              from '../accordion-scorecard/accordion-scorecard';
 import './player-modal.css';
+import '../accordion-scorecard/accordion-scorecard.css'
 
 let PlayerModalElement;
 
@@ -21,7 +22,7 @@ export default function PlayerModal() {
 
     return (
         <div id='player-modal' data-uk-modal={true}>
-            <div className='uk-modal-dialog uk-modal-body'>
+            <div className='uk-modal-dialog uk-modal-body player-modal'>
                 <button className='uk-modal-close-default' type='button' data-uk-close/>
                 <div className="uk-grid-small uk-flex-middle" data-uk-grid>
                     <div className="uk-width-auto">
@@ -35,6 +36,7 @@ export default function PlayerModal() {
                         </p>
                     </div>
                 </div>
+
                 <ul data-uk-accordion="multiple: true">
                     {rounds.map(({ scores, total }, i) =>
                         <li key={`accordion-list-${id}-${i}`} className={`cursor-pointer ${isOpen(i+1)}`}>
