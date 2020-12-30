@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
-import UIkit              from 'uikit';
-import { useSelector }    from 'react-redux';
+import React, { useMemo }              from 'react';
+import UIkit                           from 'uikit';
+import { useSelector }                 from 'react-redux';
 import { countries }                   from '../../utils/country-svgs';
 import { getDisplayName, getPosition } from '../../utils/golf-utils';
-import AccordionScorecard              from '../accordion-scorecard/accordion-scorecard';
+import Scorecard                       from '../scorecard/scorecard';
 import './player-modal.css';
-import '../accordion-scorecard/accordion-scorecard.css'
+import '../scorecard/scorecard.css'
 
 let PlayerModalElement;
 
@@ -17,7 +17,8 @@ export default function PlayerModal() {
 
     let { player: { id, stats: { first_name, last_name, pos, status, topar, countryCode, today, round1, round2, round3, round4 } }, masters: { pars } } = useSelector(state => state);
 
-    let rounds = useMemo(() => [round1 || {}, round2 || {}, round3 || {}, round4 || {}], [round1, round2, round3, round4]);
+    const initialScores = { scores: [] };
+    let rounds = useMemo(() => [round1 || initialScores, round2 || initialScores, round3 || initialScores, round4 || initialScores], [round1, round2, round3, round4]);
     let position = useMemo(() => getPosition(pos, status), [pos, status]);
 
     return (
@@ -37,24 +38,10 @@ export default function PlayerModal() {
                     </div>
                 </div>
 
-                <ul data-uk-accordion="multiple: true">
-                    {rounds.map(({ scores, total }, i) =>
-                        <li key={`accordion-list-${id}-${i}`} className={`cursor-pointer ${isOpen(i+1)}`}>
-                            <AccordionScorecard round={i+1} holes={holes} pars={pars} total={total || today || position} scores={scores || []}/>
-                        </li>
-                    )}
-                </ul>
+                <Scorecard rounds={rounds || []} holes={holes} pars={pars} today={today} position={position}/>
             </div>
         </div>
     )
-
-    function isOpen(round) {
-        return (round === parseInt(process.env.REACT_APP_CURRENT_ROUND) && !isCutOrWithdrew()) ? 'uk-open' : '';
-    }
-
-    function isCutOrWithdrew() {
-        return position === 'CUT' || position === 'WD';
-    }
 
 }
 
