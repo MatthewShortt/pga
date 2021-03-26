@@ -18,6 +18,7 @@ export default function PlayerModal() {
     let { player: { id, stats: { first_name, last_name, pos, status, topar, countryCode, today, round1, round2, round3, round4 } }, masters: { pars } } = useSelector(state => state);
 
     const initialScores = { scores: [] };
+    // eslint-disable-next-line
     let rounds = useMemo(() => [round1 || initialScores, round2 || initialScores, round3 || initialScores, round4 || initialScores], [round1, round2, round3, round4]);
     let position = useMemo(() => getPosition(pos, status), [pos, status]);
 
