@@ -39,7 +39,7 @@ export default function PlayerModal() {
                     </div>
                 </div>
 
-                <Scorecard rounds={rounds || []} holes={holes} pars={pars} today={today} position={position}/>
+                <Scorecard rounds={rounds || []} holes={holes} pars={pars} today={today} position={position} id={id}/>
             </div>
         </div>
     )

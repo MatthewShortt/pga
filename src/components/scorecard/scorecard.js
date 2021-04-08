@@ -1,7 +1,8 @@
 import React from 'react';
+import { compact } from 'lodash';
 import './scorecard.css';
 
-export default function Scorecard({ rounds, holes, pars, today, position }) {
+export default function Scorecard({ rounds, holes, pars, today, position, id }) {
 
     return (
         <div className='grid-container uk-text-light uk-text-small uk-overflow-auto uk-margin-top'>
@@ -16,14 +17,14 @@ export default function Scorecard({ rounds, holes, pars, today, position }) {
                 <div key={`round-${i}`} className='pars'>{par}</div>
             )}
             <div className='pars'>72</div>
-            {rounds.map(({ scores, total }, i) =>
-                <>
+            {rounds.map(({ roundStatus, scores, total }, i) =>
+                <React.Fragment key={`${id}-scores-round-${i}`}>
                     <div className='body'>R{i+1}</div>
                     {scores.map((score, j) =>
                         <div key={`round-${i+1}-par-${score}-${j+1}`} className={`body ${getScoreStyling(score, pars.round1[j])}`}>{score}</div>
                     )}
-                    <div className='body'>{getScore(scores)}</div>
-                </>
+                    <div className='body'>{getRoundScore(scores, roundStatus)}</div>
+                </React.Fragment>
             )}
         </div>
     )
@@ -40,7 +41,11 @@ export default function Scorecard({ rounds, holes, pars, today, position }) {
     function getScore(scores) {
         const total = scores.reduce((a, b) => a + b, 0);
         if (total === 0) return today ? today : position;
-        return scores.length === 18 ? total : today;
+        return compact(scores).length === 18 ? total : today;
+    }
+
+    function getRoundScore(scores, roundStatus) {
+        return roundStatus === 'Pre' ? '-' : getScore(scores);
     }
 
     function getScoreStyling(score, par) {
