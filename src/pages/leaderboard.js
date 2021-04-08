@@ -37,7 +37,7 @@ export default function Leaderboard() {
                 </thead>
                 <tbody>
                 {masters.player
-                    .filter(player => player.pos)
+                    // .filter(player => player.pos)
                     .map((player, i) =>
                         <tr className='uk-text-small' key={`leaderboard-${player.id}-${i}`}>
                             <td className='uk-text-light uk-text-middle uk-padding-remove-right'>{getPosition(player.pos, player.status)}</td>
@@ -52,7 +52,7 @@ export default function Leaderboard() {
                             </td>
                             <td className='uk-text-light uk-text-middle'>{player.today || '-'}</td>
                             <td className='uk-text-light uk-text-middle'>{player.thru || player.teetime}</td>
-                            <td className='uk-text-light uk-text-middle'>{player.topar}</td>
+                            <td className='uk-text-light uk-text-middle'>{player.topar || '-'}</td>
                         </tr>
                     )}
                 </tbody>
