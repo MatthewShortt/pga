@@ -25,7 +25,7 @@ export default function ScoreCard({ person, position, todaysWorstScore }) {
                     <tr key={`score-card-${id}-${k}`} className='uk-text-middle'>
                         <td className='uk-padding-remove-right uk-text-middle'>
                             <img className="uk-border-circle uk-preserve-width"
-                                 src={`https://www.masters.com/images/players/2020/240x240/${id}.jpg`} width="40"
+                                 src={`https://www.masters.com/images/players/2021/240x240/${id}.jpg`} width="40"
                                  alt={name}/>
                         </td>
                         <td className='uk-text-left uk-text-middle'>

@@ -28,13 +28,13 @@ export default function PlayerModal() {
                 <button className='uk-modal-close-default' type='button' data-uk-close/>
                 <div className="uk-grid-small uk-flex-middle" data-uk-grid>
                     <div className="uk-width-auto">
-                        <img className="uk-border-circle" width="75" src={`https://www.masters.com/images/players/2020/240x240/${id}.jpg`} alt={`${first_name} ${last_name}`}/>
+                        <img className="uk-border-circle" width="75" src={`https://www.masters.com/images/players/2021/240x240/${id}.jpg`} alt={`${first_name} ${last_name}`}/>
                     </div>
                     <div className="uk-width-expand">
                         <h3 className="uk-card-title uk-margin-remove-bottom">{getDisplayName(first_name, last_name)}</h3>
                         <p className="uk-text-meta uk-margin-remove-top">
                             <img className='uk-preserve-width' src={countries[countryCode]} width="20" alt={countryCode}/>
-                            <span className='uk-text-light'> Pos. <span className='uk-text-emphasis'>{position}</span> | Score: <span className='uk-text-emphasis'>{topar}</span></span>
+                            <span className='uk-text-light'> Pos. <span className='uk-text-emphasis'>{position}</span> | Score: <span className='uk-text-emphasis'>{topar || '-'}</span></span>
                         </p>
                     </div>
                 </div>
