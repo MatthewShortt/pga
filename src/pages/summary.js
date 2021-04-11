@@ -13,7 +13,7 @@ export default function Summary() {
     let { masters, picks } = useSelector(state => state);
 
     const WORST_SCORE_DAY_3 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_3), []);
-    const WORST_SCORE_DAY_4 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_4), []);
+    // const WORST_SCORE_DAY_4 = useMemo(() => parseInt(process.env.REACT_APP_WORST_SCORE_DAY_4), []);
     const IS_WEEKEND        = useMemo(() => process.env.REACT_APP_IS_WEEKEND, []);
     const todaysWorstScore  = useMemo(() => process.env.REACT_APP_IS_TOURNAMENT_OVER ? 0 : getTodaysWorstScore(masters.player || []), [masters]);
 
@@ -40,7 +40,7 @@ export default function Summary() {
                     </span>
                 <ul className="uk-list uk-list-disc uk-list-primary uk-text-small uk-margin-small-top">
                     <li>Round 3 worst score: {getNumberAsGolfString(WORST_SCORE_DAY_3)}</li>
-                    <li>Round 4 worst score: {getNumberAsGolfString(WORST_SCORE_DAY_4)}</li>
+                    <li>Round 4 worst score: {getNumberAsGolfString(todaysWorstScore)}</li>
                 </ul>
             </div>
         </PageLayout>
