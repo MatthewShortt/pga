@@ -32,5 +32,6 @@ export function getFirstNameInitials(firstName) {
 export function getPosition(pos, status) {
     if (status === 'C') return 'CUT';
     else if (status === 'W') return 'WD';
+    else if (status === 'D') return 'DQ';
     else return pos || '-';
 }

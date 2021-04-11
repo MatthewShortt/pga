@@ -42,11 +42,17 @@ function connectUserPicksWithStats(picks, stats, todaysWorstScore) {
                 .map(pick => {
                     pick.stats = stats.player.find(golfer => golfer.id === pick.id) || {};
                     pick.cut   = pick.stats.status === 'C';
+                    pick.dq    = pick.stats.status === 'D';
                     return pick;
                 })
                 .sort((playerA, playerB) => {
-                    if (!playerA.cut && playerB.cut) return -1;
+                    // handle disqualified players
+                    if (!playerA.dq && playerB.dq) return -1;
+                    else if (playerA.dq && !playerB.dq) return 1;
+                    // handle cut players
+                    else if (!playerA.cut && playerB.cut) return -1;
                     else if (playerA.cut && !playerB.cut) return 1;
+                    // sort by score to par
                     else return parseGolfScore(playerA.stats.topar) - parseGolfScore(playerB.stats.topar);
                 })
                 .map((player, i) => {

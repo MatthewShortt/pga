@@ -34,7 +34,7 @@ export default function ScoreCard({ person, position, todaysWorstScore }) {
                         <td className='uk-text-left uk-text-middle'>
                             <img className='uk-preserve-width' src={countries[stats.countryCode]} width="20" alt={stats.countryCode}/>
                         </td>
-                        <td className='uk-text-light uk-text-left uk-text-middle'>{getPlayerScoreAsString(stats.topar || 'E', stats.status === 'C')}</td>
+                        <td className='uk-text-light uk-text-left uk-text-middle'>{getPlayerScoreAsString(stats.topar || 'E', stats.status)}</td>
                     </tr>
                 )}
                 </tbody>
@@ -49,7 +49,10 @@ export default function ScoreCard({ person, position, todaysWorstScore }) {
         PlayerModalElement.show();
     }
 
-    function getPlayerScoreAsString(score, isCut) {
+    function getPlayerScoreAsString(score, status) {
+        const isCut = status === 'C';
+        const isDisqualified = status === 'D';
+        if (isDisqualified) return 'DQ';
         return (isCut
                 ? <span>
                     {getNumberAsGolfString(getMissedCutScore(parseInt(score), todaysWorstScore))}
